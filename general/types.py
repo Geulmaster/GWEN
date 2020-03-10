@@ -1,4 +1,1 @@
-functions_arr = ["yo", "jojo", "exit"]
-
-def yo():
-    print("go")
+functions_arr = ["yo", "copy_file", "exit"]
