@@ -1,1 +1,0 @@
-functions_arr = ["yo", "copy_file", "exit"]

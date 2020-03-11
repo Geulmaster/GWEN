@@ -21,4 +21,8 @@ class Basic():
 
 
     def yo(self):
-        print("yoy")
+        print("yoyo")
+
+    def exit(self):
+        print("Bye!")
+        exit()
