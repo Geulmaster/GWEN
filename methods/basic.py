@@ -97,9 +97,6 @@ class Basic():
         else:
             print("Inserted path is incorrect")
 
-    def yo(self):
-        print("yoyo")
-
     def exit(self):
         print("Bye!")
         exit()

@@ -9,7 +9,7 @@ functions = functionsList.basic_functions_list
 
 class General(cmd.Cmd):
 
-    def do_basic(self, *args):
+    def do_files(self, *args):
         option = True
         while option != 'exit':
             option = questionary.select("choose: ", choices=functions,).ask()
