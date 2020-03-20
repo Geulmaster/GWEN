@@ -16,6 +16,9 @@ class General(cmd.Cmd):
             method = getattr(basic, option)
             method()
 
+    def do_gwen(self, *args):
+        print("Starting G.W.E.N") #TODO: Add the personal assistent
+
     def do_help(self, *args):
         print(messages.help())
 

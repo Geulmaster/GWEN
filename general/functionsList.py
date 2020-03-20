@@ -1,1 +1,1 @@
-basic_functions_list = ["copy_file", "copy_folder", "move", "delete_file", "delete_folder", "exit"]
+basic_functions_list = ["copy_file", "copy_folder","copy_multiple", "move", "delete_file", "delete_folder", "delete_multiple", "exit"]

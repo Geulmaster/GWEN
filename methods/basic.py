@@ -53,6 +53,23 @@ class Basic():
             print("Couldn't do the operation. Please check your inserted paths.")
 
     """
+    Gets from the user the extension of files and copies all of them.
+    """
+
+    def copy_multiple(self):
+        pathPattern()
+
+        source = input("Insert the source path: ")
+        extension = input("Insert the files extension: ")
+        destination = input("Insert the destination path: ")
+
+        for file_name in os.listdir(source):
+            if file_name.endswith(str(extension)):
+                pathname = os.path.join(source, file_name)
+                if os.path.isfile(pathname):
+                    shutil.copy2(pathname, destination)
+
+    """
     Can handle folders and files
     """
 
@@ -96,6 +113,23 @@ class Basic():
             print("Folder has been removed")
         else:
             print("Inserted path is incorrect")
+
+    """
+    Gets from the user the extension of files and deletes all of them.
+    """
+
+    def delete_multiple(self):
+        pathPattern()
+
+        source = input("Insert the source path: ")
+        extension = input("Insert the files extension: ")
+        destination = input("Insert the destination path: ")
+
+        for file_name in os.listdir(source):
+            if file_name.endswith(str(extension)):
+                pathname = os.path.join(source, file_name)
+                if os.path.isfile(pathname):
+                    os.remove(str(pathname))
 
     def exit(self):
         print("Bye!")
