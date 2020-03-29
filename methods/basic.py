@@ -131,6 +131,30 @@ class Basic():
                 if os.path.isfile(pathname):
                     os.remove(str(pathname))
 
+    """
+    Creates a file in a specific destination
+    """
+
+    def create_file(self):
+        pathPattern()
+
+        source = input("Insert a directory: ")
+        extension = input("Insert the file type (extension): ")
+        name = input("Insert the file name: ")
+
+        file_name = source + '\\' + name + '.' + extension
+        file = open(file_name, "w+")
+
+        edit = input("Would you like to write something in the file?")
+        if edit == 'yes' or 'y':
+            content = input("Type your input: ")
+            file = open(file_name, "a+")
+            file.write(content)
+            print("{} has been created".format(file_name))
+        else:
+            print("Ok, {} is an empty file for now".format(file_name))
+
+
     def exit(self):
         print("Bye!")
         exit()
