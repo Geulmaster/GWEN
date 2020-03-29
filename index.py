@@ -9,12 +9,15 @@ functions = functionsList.basic_functions_list
 
 class General(cmd.Cmd):
 
-    def do_basic(self, *args):
+    def do_files(self, *args):
         option = True
         while option != 'exit':
             option = questionary.select("choose: ", choices=functions,).ask()
             method = getattr(basic, option)
             method()
+
+    def do_gwen(self, *args):
+        print("Starting G.W.E.N") #TODO: Add the personal assistent
 
     def do_help(self, *args):
         print(messages.help())

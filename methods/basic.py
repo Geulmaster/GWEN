@@ -53,6 +53,23 @@ class Basic():
             print("Couldn't do the operation. Please check your inserted paths.")
 
     """
+    Gets from the user the extension of files and copies all of them.
+    """
+
+    def copy_multiple(self):
+        pathPattern()
+
+        source = input("Insert the source path: ")
+        extension = input("Insert the files extension: ")
+        destination = input("Insert the destination path: ")
+
+        for file_name in os.listdir(source):
+            if file_name.endswith(str(extension)):
+                pathname = os.path.join(source, file_name)
+                if os.path.isfile(pathname):
+                    shutil.copy2(pathname, destination)
+
+    """
     Can handle folders and files
     """
 
@@ -97,8 +114,46 @@ class Basic():
         else:
             print("Inserted path is incorrect")
 
-    def yo(self):
-        print("yoyo")
+    """
+    Gets from the user the extension of files and deletes all of them.
+    """
+
+    def delete_multiple(self):
+        pathPattern()
+
+        source = input("Insert the source path: ")
+        extension = input("Insert the files extension: ")
+        destination = input("Insert the destination path: ")
+
+        for file_name in os.listdir(source):
+            if file_name.endswith(str(extension)):
+                pathname = os.path.join(source, file_name)
+                if os.path.isfile(pathname):
+                    os.remove(str(pathname))
+
+    """
+    Creates a file in a specific destination
+    """
+
+    def create_file(self):
+        pathPattern()
+
+        source = input("Insert a directory: ")
+        extension = input("Insert the file type (extension): ")
+        name = input("Insert the file name: ")
+
+        file_name = source + '\\' + name + '.' + extension
+        file = open(file_name, "w+")
+
+        edit = input("Would you like to write something in the file?")
+        if edit == 'yes' or 'y':
+            content = input("Type your input: ")
+            file = open(file_name, "a+")
+            file.write(content)
+            print("{} has been created".format(file_name))
+        else:
+            print("Ok, {} is an empty file for now".format(file_name))
+
 
     def exit(self):
         print("Bye!")
