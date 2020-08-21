@@ -4,6 +4,7 @@ copy, move, delete functions
 import os
 import shutil
 from methods import platforms
+from Kingfish.Core import logger
 
 """
 Tells the user how to insert path according to his OS
@@ -33,9 +34,9 @@ class Basic():
         destination = input("Insert the destination path: ")
         try:
             shutil.copy(str(source), str(destination))
-            print("File has been copied to {}".format(str(destination)))
+            logger.info("File has been copied to {}".format(str(destination)))
         except:
-            print("Couldn't do the operation. Please check your inserted paths.")
+            logger.fatal("Couldn't do the operation. Please check your inserted paths.")
 
     """
     Get from the user path to a folder and destination.
@@ -48,9 +49,9 @@ class Basic():
         destination = input("Insert the destination path: ")
         try:
             shutil.copytree(str(source), str(destination))
-            print("Folder has been copied to {}".format(str(destination)))
+            logger.info("Folder has been copied to {}".format(str(destination)))
         except:
-            print("Couldn't do the operation. Please check your inserted paths.")
+            logger.fatal("Couldn't do the operation. Please check your inserted paths.")
 
     """
     Gets from the user the extension of files and copies all of them.
@@ -80,9 +81,9 @@ class Basic():
         destination = input("Insert the destination path: ")
         try:
             shutil.move(str(source), str(destination))
-            print("File has been moved to {}".format(str(destination)))
+            logger.info("File has been moved to {}".format(str(destination)))
         except:
-            print("Couldn't do the operation. Please check your inserted paths.")
+            logger.fatal("Couldn't do the operation. Please check your inserted paths.")
 
     """
     Gets a file to delete
@@ -95,9 +96,9 @@ class Basic():
 
         if os.path.isfile(str(source)):
             os.remove(str(source))
-            print("File has been removed")
+            logger.info("File has been removed")
         else:
-            print("Inserted path is incorrect")
+            logger.fatal("Inserted path is incorrect")
 
     """
     Deletes a folder
@@ -110,9 +111,9 @@ class Basic():
 
         if os.path.isdir(str(source)):
             os.rmdir(str(source))
-            print("Folder has been removed")
+            logger.info("Folder has been removed")
         else:
-            print("Inserted path is incorrect")
+            logger.fatal("Inserted path is incorrect")
 
     """
     Gets from the user the extension of files and deletes all of them.
@@ -150,11 +151,11 @@ class Basic():
             content = input("Type your input: ")
             file = open(file_name, "a+")
             file.write(content)
-            print("{} has been created".format(file_name))
+            logger.info("{} has been created".format(file_name))
         else:
-            print("Ok, {} is an empty file for now".format(file_name))
+            logger.info("Ok, {} is an empty file for now".format(file_name))
 
 
     def exit(self):
-        print("Bye!")
+        logger.info("Bye!")
         exit()

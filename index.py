@@ -2,6 +2,7 @@ import questionary
 import cmd
 from general import functionsList, messages
 from methods.basic import Basic
+from Kingfish.Core import logger
 
 
 basic = Basic() #Class from basic.py
@@ -17,10 +18,10 @@ class General(cmd.Cmd):
             method()
 
     def do_gwen(self, *args):
-        print("Starting G.W.E.N") #TODO: Add the personal assistent
+        logger.info("Starting G.W.E.N") #TODO: Add the personal assistent
 
     def do_help(self, *args):
-        print(messages.help())
+        logger.info(messages.help())
 
     def do_exit(self, *args):
         basic.exit()
