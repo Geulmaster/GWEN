@@ -1,6 +1,6 @@
 def help():
-    msg = """Commands:\n 
-    files -> Displays files options menu"""
+    msg = """\n**Commands:**\n 
+    files -> Displays files options menu\n"""
     return msg
 
 def welcome():
