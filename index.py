@@ -2,19 +2,28 @@ import questionary
 import cmd
 from general import functionsList, messages
 from methods.basic import Basic
+import methods.hardware as hardware
 from Kingfish.Core import logger
 
 
 basic = Basic() #Class from basic.py
-functions = functionsList.basic_functions_list
+basic_functions = functionsList.basic_functions_list
+hardware_functions = functionsList.hardware_functions_list
 
 class General(cmd.Cmd):
 
     def do_files(self, *args):
         option = True
         while option != 'exit':
-            option = questionary.select("choose: ", choices=functions,).ask()
+            option = questionary.select("choose: ", choices=basic_functions,).ask()
             method = getattr(basic, option)
+            method()
+
+    def do_hardware(self, *args):
+        option = True
+        while option != exit:
+            option = questionary.select("choose: ", choices=hardware_functions,).ask()
+            method = getattr(hardware, option)
             method()
 
     def do_gwen(self, *args):
