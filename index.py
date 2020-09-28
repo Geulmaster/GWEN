@@ -23,7 +23,7 @@ class General(cmd.Cmd):
         option = True
         while option != exit:
             option = questionary.select("choose: ", choices=hardware_functions,).ask()
-            method = getattr(hardware, option)
+            method = getattr(hardware, option.lower())
             method()
 
     def do_gwen(self, *args):
