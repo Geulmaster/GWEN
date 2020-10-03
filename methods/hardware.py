@@ -18,5 +18,15 @@ def ram():
     """
     print(str(psutil.virtual_memory().percent) + "%")
 
+def processes():
+    for process in psutil.process_iter():
+        try:
+            process_name = process.name()
+            process_id = process.pid
+            print(process_name, " ::: ", process_id)
+        except (psutil.NoSuchProcess, \
+            psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+
 def exit():
     sys.exit()
