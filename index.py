@@ -4,7 +4,7 @@ from general import functionsList, messages
 from methods.basic import Basic
 import methods.hardware as hardware
 from Kingfish.Core import logger
-
+import sys
 
 basic = Basic() #Class from basic.py
 basic_functions = functionsList.basic_functions_list
@@ -39,4 +39,11 @@ class General(cmd.Cmd):
 run = General(messages.welcome())
 
 if __name__ == '__main__':
-    General().cmdloop()
+    try:
+        if sys.argv[1] == "hardware":
+            General().do_hardware()
+        else:
+            General().cmdloop() 
+    except:
+        pass
+    
