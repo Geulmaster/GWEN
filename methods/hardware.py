@@ -1,6 +1,7 @@
 import sys
 import memory_profiler as memP
 import psutil
+import speedtest
 
 def memory():
     for value in memP.memory_usage():
@@ -27,6 +28,14 @@ def processes():
         except (psutil.NoSuchProcess, \
             psutil.AccessDenied, psutil.ZombieProcess):
             pass
+
+def network():
+    st = speedtest.Speedtest()
+    st.get_best_server()
+    download_speed = st.download() * 0.000001 #Converts bytes to MBs
+    upload_speed = st.upload() * 0.000001
+    print(f"""Download speed is {download_speed} MB per second
+Upload speed is {upload_speed} MB per second""")
 
 def exit():
     sys.exit()

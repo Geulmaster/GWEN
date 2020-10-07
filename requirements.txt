@@ -2,3 +2,4 @@ questionary
 Kingfish
 memory-profiler
 psutil
+speedtest-cli
