@@ -1,3 +1,4 @@
+from os import getcwdb
 import questionary
 import cmd
 from general import functionsList, messages
@@ -16,7 +17,7 @@ class General(cmd.Cmd):
         option = True
         while option != 'exit':
             option = questionary.select("choose: ", choices=basic_functions,).ask()
-            method = getattr(basic, option)
+            method = getattr(basic, option.lower())
             method()
 
     def do_hardware(self, *args):
@@ -42,8 +43,5 @@ if __name__ == '__main__':
     try:
         if sys.argv[1] == "hardware":
             General().do_hardware()
-        else:
-            General().cmdloop() 
     except:
-        pass
-    
+        General().cmdloop()
