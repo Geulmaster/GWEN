@@ -41,7 +41,8 @@ run = General(messages.welcome())
 
 if __name__ == '__main__':
     try:
-        if sys.argv[1] == "hardware":
-            General().do_hardware()
+        if sys.argv[1]:
+            method = getattr(General(), sys.argv[1])
+            method()
     except:
         General().cmdloop()
