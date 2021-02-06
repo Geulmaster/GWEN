@@ -4,3 +4,4 @@ memory-profiler
 psutil
 speedtest-cli
 GPUtil
+tabulate

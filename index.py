@@ -42,7 +42,8 @@ run = General(messages.welcome())
 if __name__ == '__main__':
     try:
         if sys.argv[1]:
-            method = getattr(General(), sys.argv[1])
+            full_function_name = "do_" + sys.argv[1]
+            method = getattr(General(), full_function_name)
             method()
     except:
         General().cmdloop()
