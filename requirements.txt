@@ -3,3 +3,4 @@ Kingfish
 memory-profiler
 psutil
 speedtest-cli
+GPUtil
