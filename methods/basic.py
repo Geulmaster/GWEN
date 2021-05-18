@@ -11,7 +11,7 @@ Tells the user how to insert path according to his OS
 """
 def pathPattern():
     if platforms.osType() == "windows":
-        print("Path pattern: C:/path/to/file")
+        print("Path pattern: C:\\path\\to\\file")
     else:
         print("Path pattern: /path/to/file")
 

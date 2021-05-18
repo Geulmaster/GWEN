@@ -1,4 +1,3 @@
-from os import getcwdb
 import questionary
 import cmd
 from general import functionsList, messages
