@@ -10,6 +10,12 @@
 - questionary
 - cmd
 
+## Fix 'pywintypes' dll error
+
+Type python -m site to get the site-package. Navigate to the site-package folder and go to pywin32_system32 to copy pythoncom39.dll and pywintypes39.dll.
+Navigate one step back to site-package folder and get to win32 and paste the file.
+
+
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 ---
