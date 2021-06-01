@@ -1,4 +1,5 @@
 import pyttsx3
+import speech_recognition as sr
 from datetime import datetime
 from time import time
 
@@ -22,6 +23,25 @@ class Serjio:
         current_date = date.strftime("%B,%d,%Y")
         self.speak(f"It is {current_date}")
 
+
+def listen():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening")
+        recognizer.pause_threshold = 1
+        audio = recognizer.listen(source)
+
+    try:
+        print("Recognizing")
+        query = recognizer.recognize_google(audio, language="en-US")
+        print(query)
+    except Exception as error:
+        print(error)
+        print("Please repeat")
+        return "None"
+    return query
+
+#listen() TODO: Fix listen function
 
 """
 Example:
