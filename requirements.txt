@@ -6,3 +6,5 @@ speedtest-cli==2.1.3
 GPUtil
 tabulate
 pyttsx3
+pipwin
+speechRecognition
