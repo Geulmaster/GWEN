@@ -2,6 +2,8 @@ import pyttsx3
 import speech_recognition as sr
 from datetime import datetime
 from time import time
+import wikipedia
+import webbrowser
 
 class Serjio:
 
@@ -13,22 +15,34 @@ class Serjio:
         self.engine.say(audio)
         self.engine.runAndWait()
 
-    def time(self):
+    def time(self, query):
         current_time = datetime.now().strftime("%H:%M:%S")
         self.speak(f"It is {current_time}")
 
-    def date(self):
+    def date(self, query):
         timestamp = int(time())
         date = datetime.fromtimestamp(timestamp)
         current_date = date.strftime("%B,%d,%Y")
         self.speak(f"It is {current_date}")
 
+    def wiki(self, query):
+        query = query.replace("wiki", "")
+        result = wikipedia.summary(query, sentences=3)
+        print(result)
+        self.speak(result)
+
+    def search(self, query):
+        query = query.replace("search for", "")
+        webbrowser.open("https://www.google.com/search?q="+query)
+        self.speak(f"Please view the opened page about {query}")
+
     def execption(self, query):
         self.speak(f"Sorry, I do not know what is {query}")
 
-    def stop(self):
+    def stop(self, query):
         self.speak("Shutting down")
         exit()
+
 
 def listen():
     recognizer = sr.Recognizer()
@@ -47,6 +61,7 @@ def listen():
         return "None"
     return query
 
+
 run = True
 serjio = Serjio()
 serjio_methods = dir(Serjio)
@@ -60,7 +75,7 @@ while run:
             if word in serjio_methods:
                 methods.append(word)
                 method = getattr(serjio, word)
-                method()
+                method(query)
         if len(methods) == 0:
             serjio.execption(query)
     except Exception as err:
