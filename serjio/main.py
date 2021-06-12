@@ -5,7 +5,7 @@ from time import time
 
 class Serjio:
 
-    def __init__(self, text):
+    def __init__(self):
         self.engine = pyttsx3.init()
         self.speak("Hello Sir")
 
@@ -23,14 +23,20 @@ class Serjio:
         current_date = date.strftime("%B,%d,%Y")
         self.speak(f"It is {current_date}")
 
+    def execption(self, query):
+        self.speak(f"Sorry, I do not know what is {query}")
+
+    def stop(self):
+        self.speak("Shutting down")
+        exit()
 
 def listen():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening")
+        recognizer.adjust_for_ambient_noise(source,duration=4)
         recognizer.pause_threshold = 1
         audio = recognizer.listen(source)
-
     try:
         print("Recognizing")
         query = recognizer.recognize_google(audio, language="en-US")
@@ -41,10 +47,22 @@ def listen():
         return "None"
     return query
 
-#listen() TODO: Fix listen function
+run = True
+serjio = Serjio()
+serjio_methods = dir(Serjio)
 
-"""
-Example:
-run = Serjio("Hello Sir")
-run.date()
-"""
+while run:
+    query = listen().lower()
+    try:
+        words = query.split()
+        methods = []
+        for word in words:
+            if word in serjio_methods:
+                methods.append(word)
+                method = getattr(serjio, word)
+                method()
+        if len(methods) == 0:
+            serjio.execption(query)
+    except Exception as err:
+        print(err)
+        run = False
