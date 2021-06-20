@@ -4,6 +4,7 @@ from datetime import datetime
 from time import time
 import wikipedia
 import webbrowser
+from GWEN.methods import hardware
 
 class Serjio:
 
@@ -43,6 +44,9 @@ class Serjio:
         self.speak("Shutting down")
         exit()
 
+    def shutdown(self, query):
+        self.stop(query)
+
 
 def listen():
     recognizer = sr.Recognizer()
@@ -71,6 +75,11 @@ while run:
     try:
         words = query.split()
         methods = []
+        if "hardware" in query:
+            query = query.replace("hardware ", "")
+            method = getattr(hardware, query.lower())
+            method()
+            continue
         for word in words:
             if word in serjio_methods:
                 methods.append(word)
