@@ -4,6 +4,10 @@ from datetime import datetime
 from time import time
 import wikipedia
 import webbrowser
+import subprocess
+import requests
+import json
+import os
 from GWEN.methods import hardware
 
 class Serjio:
@@ -36,6 +40,22 @@ class Serjio:
         query = query.replace("search for", "")
         webbrowser.open("https://www.google.com/search?q="+query)
         self.speak(f"Please view the opened page about {query}")
+
+    def server(self):
+        self.process = subprocess.Popen(['python', 'server.py'])
+
+    def exit_from_server(self):
+        self.process.kill()
+        print("Shutdown server")
+
+    def open(self, query):
+        #TODO: fix exit_from_server bug
+        query = query.replace("open ", "")
+        self.server()
+        response = requests.get("http://localhost:5000/paths")
+        self.paths = json.loads(response.text)
+        os.startfile(self.paths[query])
+        self.exit_from_server()
 
     def execption(self, query):
         self.speak(f"Sorry, I do not know what is {query}")
