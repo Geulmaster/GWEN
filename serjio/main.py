@@ -57,6 +57,11 @@ class Serjio:
         os.startfile(self.paths[query])
         self.exit_from_server()
 
+    def location(self, query):
+        query = query.replace(" location", "")
+        location = query
+        webbrowser.open_new_tab(f"https://google.com/maps/place/{location}")
+
     def execption(self, query):
         self.speak(f"Sorry, I do not know what is {query}")
 
