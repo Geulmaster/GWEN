@@ -5,6 +5,7 @@ from methods.basic import Basic
 import methods.hardware as hardware
 from Kingfish.Core import logger
 import sys
+import subprocess
 
 basic = Basic() #Class from basic.py
 basic_functions = functionsList.basic_functions_list
@@ -26,8 +27,9 @@ class General(cmd.Cmd):
             method = getattr(hardware, option.lower())
             method()
 
-    def do_gwen(self, *args):
-        logger.info("Starting G.W.E.N") #TODO: Add the personal assistent
+    def do_serjio(self, *args):
+        logger.info("Starting Serjio")
+        serhio = subprocess.Popen(['python', 'serjio/main.py'])
 
     def do_help(self, *args):
         logger.info(messages.help())
