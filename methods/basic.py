@@ -3,7 +3,8 @@ copy, move, delete functions
 """
 import os
 import shutil
-from methods import platforms
+#from methods import platforms
+from GWEN.methods import platforms
 from Kingfish.Core import logger
 
 """
@@ -27,11 +28,12 @@ class Basic():
     Then, copies it from the source to the destination.
     """
 
-    def copy_file(self):
+    def copy_file(self, source = None, destination = None):
         pathPattern()
-
-        source = input("Insert the source path (including the file): ")
-        destination = input("Insert the destination path: ")
+        if not source:
+            source = input("Insert the source path (including the file): ")
+        if not destination:
+            destination = input("Insert the destination path: ")
         try:
             shutil.copy(str(source), str(destination))
             logger.info("File has been copied to {}".format(str(destination)))
@@ -155,7 +157,7 @@ class Basic():
         else:
             logger.info("Ok, {} is an empty file for now".format(file_name))
 
-    def name_manipulator():
+    def name_manipulator(self):
         """
         Replaces parts of names
         example: name_manipulator("serhio", "kopo")
@@ -170,7 +172,7 @@ class Basic():
                 os.rename(os.path.join(root, name), os.path.join(root, new_name))
                 print(f"{name} changed to {new_name}")
 
-    def dir_info():
+    def dir_info(self):
         """
         Returns number of files in directory
         """
@@ -178,6 +180,21 @@ class Basic():
         number_of_files = len([files for root, dirs, files in os.walk(source) for name in files if os.path.isfile(os.path.join(root, name))])
         print(f"There are {number_of_files} files in {source}")
         return number_of_files
+
+    def copy_directory(self, source = None, destination = None):
+        if not source:
+            source = input("Insert the source path (including the file): ")
+        if not destination:
+            destination = input("Insert the destination path: ")
+        name = ""
+        for char in source[::-1]:
+            if char != "\\":
+                name += char
+            else:
+                break
+        formatted_name = name[::-1]
+        shutil.copytree(source, os.path.join(destination, formatted_name))
+        logger.info(f"Successfully copied {source} content to {destination}")
 
     def exit(self):
         logger.info("Bye!")
