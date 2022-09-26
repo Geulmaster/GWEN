@@ -48,7 +48,7 @@ def processes():
 
 
 def network():
-    print("Please wait a few seconds...")
+    print("Please wait a moment...")
     st = speedtest.Speedtest()
     st.get_best_server()
     download_speed = st.download() * 0.000001 #Converts bytes to MBs
