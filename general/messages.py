@@ -1,7 +1,10 @@
 def help():
-    msg = """\n**Commands:**\n 
+    msg = """\n\n**Commands:**\n 
     files -> Displays files options menu\n
-    help -> Displays commands list\n"""
+    hardware -> Displays hardware commands list\n
+    serjio -> Starts Serjio\n
+    help -> Displays commands list\n
+    \n"""
     return msg
 
 def welcome():

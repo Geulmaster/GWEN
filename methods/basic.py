@@ -3,8 +3,8 @@ copy, move, delete functions
 """
 import os
 import shutil
-#from methods import platforms
-from GWEN.methods import platforms
+from methods import platforms
+#from GWEN.methods import platforms
 from Kingfish.Core import logger
 
 """
